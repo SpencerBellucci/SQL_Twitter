@@ -16,8 +16,11 @@ CREATE TABLE temp (
   PRIMARY KEY (tweetId))
 ENGINE = InnoDB;
 
+set @tweetId = 01; -- tweet id of the tweet we are retweeting
+set @userId = 0002; -- user id of the user who is retweeting the tweet
+
 -- In this example, the user is:
-# 		retweeting tweet 0001
+# 		retweeting tweet 01
 # 		the tweetId for the new tweet will be automaticaly generated
 # 		the user who is retweeting this is 0002
 
@@ -25,12 +28,12 @@ ENGINE = InnoDB;
 insert into temp (tweetId, userId, content, favorites, isRetweet, retweet, originalId)
 	values (
 			(select max(tweetId) from tweet) + 1, 
-			0002,
-            (select content from tweet where tweetId = 0001),
-            (select favorites from tweet where tweetId = 0001),
+			@userID,
+            (select content from tweet where tweetId = @tweetId),
+            (select favorites from tweet where tweetId = @tweetId),
             1,
-            ((select retweet from tweet where tweetId = 0001) + 1),
-            0001
+            ((select retweet from tweet where tweetId = @tweetId) + 1),
+            @tweetId
 		);
 
 -- Incrimenting the retweet for the original tweet
