@@ -62,22 +62,8 @@ DROP TABLE IF EXISTS followers ;
 
 CREATE TABLE IF NOT EXISTS followers (
   followerUserId INT NOT NULL,
-  userid INT NOT NULL,
-  PRIMARY KEY (followerUserId))
+  userid INT NOT NULL)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table following
--- -----------------------------------------------------
-DROP TABLE IF EXISTS following ;
-
-CREATE TABLE IF NOT EXISTS following (
-  followingUserId INT NOT NULL,
-  userid INT NOT NULL,
-  PRIMARY KEY (followingUserId))
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
