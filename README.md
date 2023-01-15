@@ -1,1 +1,1 @@
-# Project2
+# TSQL Twitter project for SQL class
